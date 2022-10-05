@@ -71,7 +71,7 @@ struct CardView: View {
                     .fill()
                     .foregroundColor(.white)
                 shape
-                    .stroke(lineWidth: 3.0)
+                    .strokeBorder(lineWidth: 3.0)
                 Text(content)
                     .font(.largeTitle)
                     .foregroundColor(Color.yellow)
