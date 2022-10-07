@@ -10,15 +10,14 @@ import SwiftUI
 
 
 struct ContentView: View {
-    var emojis = ["🛴", "🚲", "🛵", "🏍", "🛺", "🚔", "🚍", "🚘", "🚖", "🚡", "🚃", "🚝", "🚂", "🚆", "🚇", "✈️", "🛫", "🚀", "🛸", "🚁", "⛵️", "🚤", "🚢", "🛳"]
-    @State var emojiCount = 4
+    let viewModel: EmojiMemoryGame
     
     var body: some View {
         VStack {
             ScrollView{
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
-                    ForEach(emojis[0..<emojiCount], id: \.self) { emoji in
-                        CardView(content: emoji)
+                    ForEach(viewModel.cards, id: \.self.content) { card in
+                        CardView(card: card)
                             .aspectRatio(2/3, contentMode: .fit)
                     }
                 }
@@ -33,19 +32,18 @@ struct ContentView: View {
 }
 
 struct CardView: View {
-    var content: String
-    @State var isFaceUp: Bool = true
+    let card: MemoryGame<String>.Card
     
     var body: some View {
         ZStack { 
             let shape = RoundedRectangle(cornerRadius: 20.0)
-            if isFaceUp {
+            if card.isFaceUp {
                 shape
                     .fill()
                     .foregroundColor(.white)
                 shape
                     .strokeBorder(lineWidth: 3.0)
-                Text(content)
+                Text(card.content)
                     .font(.largeTitle)
                     .foregroundColor(Color.yellow)
             } else {
@@ -53,17 +51,15 @@ struct CardView: View {
                     .fill()
             }
         }
-        .onTapGesture {
-            isFaceUp = !isFaceUp
-        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let game = EmojiMemoryGame()
+        ContentView(viewModel: game)
             .preferredColorScheme(.light)
-        ContentView()
+        ContentView(viewModel: game)
             .preferredColorScheme(.dark)
     }
 }
