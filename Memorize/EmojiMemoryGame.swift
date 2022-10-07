@@ -23,4 +23,10 @@ class EmojiMemoryGame {
     var cards: Array<MemoryGame<String>.Card> {
         return model.cards
     }
+    
+    // MARK: - Intent(s)
+    func choose(_ card: MemoryGame<String>.Card) {
+        // in a database, this can be complex. Here it is just one statement.
+        model.choose(card)
+    }
 }
