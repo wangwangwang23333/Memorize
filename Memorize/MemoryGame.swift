@@ -21,11 +21,12 @@ struct MemoryGame<CardContent> {
             let content = createCardContent(pairIndex)
             cards.append(Card(content: content, id: pairIndex * 2))
             cards.append(Card(content: content, id: pairIndex * 2 + 1))
+            print("id\(pairIndex)")
         }
     }
     
     struct Card: Identifiable {
-        var isFaceUp: Bool = false
+        var isFaceUp: Bool = true
         var isMathed: Bool = false
         var content: CardContent
         var id: Int

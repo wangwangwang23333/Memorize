@@ -16,7 +16,7 @@ struct ContentView: View {
         VStack {
             ScrollView{
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
-                    ForEach(viewModel.cards, id: \.self.content) { card in
+                    ForEach(viewModel.cards) { card in
                         CardView(card: card)
                             .aspectRatio(2/3, contentMode: .fit)
                     }
