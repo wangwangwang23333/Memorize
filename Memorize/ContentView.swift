@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct ContentView: View {
-    let viewModel: EmojiMemoryGame
+    @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
         ScrollView{
