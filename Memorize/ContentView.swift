@@ -46,6 +46,8 @@ struct CardView: View {
                 Text(card.content)
                     .font(.largeTitle)
                     .foregroundColor(Color.yellow)
+            } else if card.isMathed {
+                shape.opacity(0)
             } else {
                 shape
                     .fill()
