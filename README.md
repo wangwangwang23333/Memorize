@@ -49,3 +49,10 @@ opt ?.val <-> opt.val(opt != nil) or nil(opt)
   ![image-20221009004607958](https://wwwtypora.oss-cn-shanghai.aliyuncs.com/uPic/image-20221009004607958.png)
 
 - @State is going to make some space in the heap for this.
+
+## typealias
+
+```swift
+typealias Card = MemoryGame<String>.Card
+```
+
