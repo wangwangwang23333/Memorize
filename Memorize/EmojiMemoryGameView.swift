@@ -34,8 +34,8 @@ struct EmojiMemoryGameView: View {
 struct CardView: View {
     private let card: EmojiMemoryGame.Card
     
-    init(_ givenCard: EmojiMemoryGame.Card) {
-        card = givenCard
+    init(_ card: EmojiMemoryGame.Card) {
+        self.card = card
     }
     
     var body: some View {
