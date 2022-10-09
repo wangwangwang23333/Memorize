@@ -14,12 +14,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     private var indexOfTheOneAndOnlyFaceUpCard: Int? {
         get {
             // 使用indices的filter函数进行检索
-            let faceUpCardIndices = cards.indices.filter({ cards[$0].isFaceUp })
-            if faceUpCardIndices.count == 0 {
-                return faceUpCardIndices.first
-            } else {
-                return nil
-            }
+            cards.indices.filter({ cards[$0].isFaceUp }).oneAndOnly
         }
         set {
             for index in cards.indices {
