@@ -39,3 +39,13 @@ There's also `??` which does "Optional defaulting". It is called "nil-coalescing
 opt ?.val <-> opt.val(opt != nil) or nil(opt)
 
 ![image-20221008201119195](https://wwwtypora.oss-cn-shanghai.aliyuncs.com/uPic/image-20221008201119195.png)
+
+## @State
+
+- Your view is Read Only
+
+- When views need State
+
+  ![image-20221009004607958](https://wwwtypora.oss-cn-shanghai.aliyuncs.com/uPic/image-20221009004607958.png)
+
+- @State is going to make some space in the heap for this.
