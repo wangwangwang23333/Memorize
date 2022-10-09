@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct MemoryGame<CardContent> where CardContent: Equatable {
     private(set) var cards: Array<Card>
     
@@ -67,5 +68,17 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         var isMathed = false
         let content: CardContent
         let id: Int
+    }
+}
+
+// 拓展Array
+// 查阅文档可知Element是Array使用的
+extension Array {
+    var oneAndOnly: Element? {
+        if self.count == 1 {
+            return self.first
+        } else {
+            return nil
+        }
     }
 }
