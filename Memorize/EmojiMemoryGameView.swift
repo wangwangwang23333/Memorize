@@ -45,8 +45,7 @@ struct CardView: View {
                     shape
                         .strokeBorder(lineWidth: DrawingConstants.lineWidth)
                     Text(card.content)
-                        .font(Font.system(size: min(geometry.size.width, geometry.size.height) *
-                                          DrawingConstants.cornerRadius))
+                        .font(font(in: geometry.size))
                 } else if card.isMathed {
                     shape.opacity(0)
                 } else {
@@ -55,6 +54,11 @@ struct CardView: View {
                 }
             }
         }
+    }
+    
+    private func font(in size: CGSize) -> Font {
+        Font.system(size: min(size.width, size.height) *
+                          DrawingConstants.cornerRadius)
     }
     
     private struct DrawingConstants {
