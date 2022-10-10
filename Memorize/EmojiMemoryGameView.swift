@@ -14,7 +14,7 @@ struct EmojiMemoryGameView: View {
     
     var body: some View {
         ScrollView{
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
                 ForEach(game.cards) { card in
                     CardView(card: card)
                         .aspectRatio(2/3, contentMode: .fit)
@@ -35,24 +35,32 @@ struct CardView: View {
     let card: EmojiMemoryGame.Card
     
     var body: some View {
-        ZStack { 
-            let shape = RoundedRectangle(cornerRadius: 20.0)
-            if card.isFaceUp {
-                shape
-                    .fill()
-                    .foregroundColor(.white)
-                shape
-                    .strokeBorder(lineWidth: 3.0)
-                Text(card.content)
-                    .font(.largeTitle)
-                    .foregroundColor(Color.yellow)
-            } else if card.isMathed {
-                shape.opacity(0)
-            } else {
-                shape
-                    .fill()
+        GeometryReader { geometry in
+            ZStack {
+                let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
+                if card.isFaceUp {
+                    shape
+                        .fill()
+                        .foregroundColor(.white)
+                    shape
+                        .strokeBorder(lineWidth: DrawingConstants.lineWidth)
+                    Text(card.content)
+                        .font(Font.system(size: min(geometry.size.width, geometry.size.height) *
+                                          DrawingConstants.cornerRadius))
+                } else if card.isMathed {
+                    shape.opacity(0)
+                } else {
+                    shape
+                        .fill()
+                }
             }
         }
+    }
+    
+    private struct DrawingConstants {
+        static let cornerRadius: CGFloat = 20
+        static let lineWidth: CGFloat = 3
+        static let fontScale: CGFloat = 0.8
     }
 }
 

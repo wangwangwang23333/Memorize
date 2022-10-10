@@ -56,3 +56,56 @@ opt ?.val <-> opt.val(opt != nil) or nil(opt)
 typealias Card = MemoryGame<String>.Card
 ```
 
+## Property Observers
+
+![image-20221009201415282](https://wwwtypora.oss-cn-shanghai.aliyuncs.com/uPic/image-20221009201415282.png)
+
+## Layout
+
+1. Container Views "offer" space to the Views inside them
+2. Views then choose what size they want to be
+3. Container Views then position the Views inside of them
+4. (and based on that, Container Views choose their own size as per #2 above)
+
+### HStack and VStack
+
+优先满足固定尺寸的子视图
+
+![image-20221009201932735](https://wwwtypora.oss-cn-shanghai.aliyuncs.com/uPic/image-20221009201932735.png)
+
+`.layoutPriority(Double)`
+
+![image-20221009202059422](https://wwwtypora.oss-cn-shanghai.aliyuncs.com/uPic/image-20221009202059422.png)
+
+.leading
+
+![image-20221009211430945](https://wwwtypora.oss-cn-shanghai.aliyuncs.com/uPic/image-20221009211430945.png)
+
+### LazyHStack and LazyVStack
+
+Never flexible
+
+### ScrollView
+
+It takes all the space space offered to it.
+
+### ZStack
+
+ZStack sizes itself to fit its children.
+
+### Modifiers
+
+![image-20221009212042517](https://wwwtypora.oss-cn-shanghai.aliyuncs.com/uPic/image-20221009212042517.png)
+
+### GeometryReader
+
+![image-20221009214637449](https://wwwtypora.oss-cn-shanghai.aliyuncs.com/uPic/image-20221009214637449.png)
+
+GeometryReader itself(it's just a View) **alaways accepts all the space offered to it**.
+
+### Safe Area
+
+The most obvious "safe area" is the notch on an iPhone X.
+
+``` ZStack {...}.edgesIgnoringSafeArea([.top])```
+
